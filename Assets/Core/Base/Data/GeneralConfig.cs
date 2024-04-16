@@ -1,9 +1,11 @@
+using Core.States.Game.Enemy;
+using Core.States.Game.Player;
 using UnityEngine;
 
 namespace Core.Base.Data {
-    [CreateAssetMenu(menuName = "Base/General", fileName = "General", order = 0)]
+    [CreateAssetMenu(menuName = "Base/General", fileName = "General")]
     public class GeneralConfig : ScriptableObject {
-        // public int villagerCounter = 10;
-        // public GameObject villagerPrefab;
+        public PlayerConfig player;
+        public EnemyConfig enemy;
     }
 }
