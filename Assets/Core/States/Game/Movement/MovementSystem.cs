@@ -24,7 +24,7 @@ namespace Core.States.Game.Movement {
                     actor.Rigidbody.MovePosition(from + direction * actor.speed * Time.fixedDeltaTime);
                 } else if (actor.Target < Level.enemy.path.Length - 1) {
                     actor.Target++;
-                    Debug.Log($"{actor.name} go to point {actor.Target}");
+                    // Debug.Log($"{actor.name} go to point {actor.Target}");
                 }
             }
         }

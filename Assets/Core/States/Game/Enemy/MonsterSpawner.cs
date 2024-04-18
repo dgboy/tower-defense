@@ -1,3 +1,4 @@
+using System.Linq;
 using Core.Base.Data;
 using DG_Pack.Base;
 using UnityEngine;
@@ -12,7 +13,6 @@ namespace Core.States.Game.Enemy {
 
         [field: SerializeField] private float TotalHealth { get; set; }
         public float time = 3f;
-        private MonsterConfig Config => Configs.enemy.monsters[0];
 
 
         private void Start() {
@@ -23,8 +23,15 @@ namespace Core.States.Game.Enemy {
             if (!Cooldown.IsExpired || TotalHealth <= 0)
                 return;
 
-            Factory.Create(Config, Level.enemy.path[0].position, Level.runtimeParent);
-            TotalHealth -= Config.health;
+            var pool = Configs.enemy.monsters.Where(x => x.health <= TotalHealth).ToList();
+            if (pool.Count <= 0) {
+                // Debug.Log($"{GetType().Name} Enemy Wave 0 is end");
+                return;
+            }
+
+            var config = pool[Random.Range(0, pool.Count)];
+            Factory.Create(config, Level.enemy.path[0].position, Level.runtimeParent);
+            TotalHealth -= config.health;
             Cooldown.Start(time);
         }
     }

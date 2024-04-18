@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f62815e85dc49e2b789723111e1b107, type: 3}
   m_Name: Ogre
   m_EditorClassIdentifier: 
+  prefab: {fileID: 452721124913706653, guid: d1df0c8899c0eff4ab34385bfac62965, type: 3}
   health: 30
   speed: 0.7
   damage: 5

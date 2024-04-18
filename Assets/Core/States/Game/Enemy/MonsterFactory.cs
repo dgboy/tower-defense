@@ -12,13 +12,14 @@ namespace Core.States.Game.Enemy {
 
 
         public void Create(MonsterConfig config, Vector3 at, Transform parent) {
-            var actor = Object.Instantiate(Configs.enemy.prefab, at, Quaternion.identity, parent);
+            var actor = Object.Instantiate(config.prefab, at, Quaternion.identity, parent);
             actor.name = $"{config.name} {Counter}";
 
             actor.speed = config.speed;
             Movement.Pool.Add(actor);
 
             Counter++;
+            Debug.Log($"{actor.name} is ready!");
         }
     }
 }
