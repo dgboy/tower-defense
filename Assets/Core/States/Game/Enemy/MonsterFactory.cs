@@ -16,6 +16,7 @@ namespace Core.States.Game.Enemy {
             actor.name = $"{config.name} {Counter}";
 
             actor.speed = config.speed;
+            actor.damage = config.damage;
             Movement.Pool.Add(actor);
 
             Counter++;
