@@ -1,5 +1,4 @@
 using Core.Base.Data;
-using Core.States.Game.Movement;
 using DG_Pack.Base;
 using UnityEngine;
 using VContainer;
@@ -9,7 +8,6 @@ namespace Core.States.Game.Enemy {
         [Inject] private GeneralConfig Configs { get; set; }
         [Inject] private LevelContext Level { get; set; }
         [Inject] private MonsterFactory Factory { get; set; }
-        [Inject] private MovementSystem Movement { get; set; }
         private ICooldown Cooldown { get; set; }
 
         [field: SerializeField] private float TotalHealth { get; set; }
@@ -25,9 +23,7 @@ namespace Core.States.Game.Enemy {
             if (!Cooldown.IsExpired || TotalHealth <= 0)
                 return;
 
-            var actor = Factory.Create(Config, Level.enemy.path[0].position, Level.runtimeParent);
-            Movement.Pool.Add(actor);
-            
+            Factory.Create(Config, Level.enemy.path[0].position, Level.runtimeParent);
             TotalHealth -= Config.health;
             Cooldown.Start(time);
         }
