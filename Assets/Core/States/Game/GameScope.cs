@@ -1,6 +1,7 @@
 using Core.Base.Data;
 using Core.States.Game.Enemy;
 using Core.States.Game.Movement;
+using Core.States.Game.Player;
 using VContainer;
 using VContainer.Unity;
 
@@ -24,13 +25,16 @@ namespace Core.States.Game {
             // builder.RegisterEntryPoint<VictorySystem>();
 
             // builder.RegisterComponentInHierarchy<UIDocumentTree>();
-            
+            RegisterPlayerScope(builder);
             RegisterMonsterScope(builder);
 
             builder.RegisterEntryPoint<GameStartup>();
         }
 
 
+        private static void RegisterPlayerScope(IContainerBuilder builder) {
+            builder.Register<TowerFactory>(Lifetime.Singleton);
+        }
         private static void RegisterMonsterScope(IContainerBuilder builder) {
             builder.Register<MonsterFactory>(Lifetime.Singleton);
             builder.RegisterComponentInHierarchy<MonsterSpawner>();

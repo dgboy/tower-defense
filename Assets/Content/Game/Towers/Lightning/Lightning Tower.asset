@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34de1770ccb44b96b009caa6d65c0f99, type: 3}
   m_Name: Lightning Tower
   m_EditorClassIdentifier: 
+  prefab: {fileID: 6666672689389437578, guid: 45f2d37cfbc8444458e736c11dfbcc0a, type: 3}
   levels:
   - cost: 5
     damage: 2
