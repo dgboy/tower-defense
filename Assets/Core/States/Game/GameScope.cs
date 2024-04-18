@@ -1,7 +1,9 @@
+using Core.Base;
 using Core.Base.Data;
 using Core.States.Game.Enemy;
 using Core.States.Game.Movement;
 using Core.States.Game.Player;
+using DG_Pack.Base;
 using VContainer;
 using VContainer.Unity;
 
@@ -13,8 +15,9 @@ namespace Core.States.Game {
         protected override void Configure(IContainerBuilder builder) {
             builder.RegisterInstance(config);
             builder.Register<RuntimeData>(Lifetime.Singleton);
-            builder.RegisterComponentInHierarchy<LevelContext>();
-
+            builder.RegisterComponentInHierarchy<LevelContext>().AsSelf().As<ICoroutineRunner>();
+            builder.Register<CoroutineCooldown>(Lifetime.Transient).As<ICooldown>();
+            
             builder.Register<MovementSystem>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
             // builder.Register<MusicService>(Lifetime.Scoped);
             // builder.Register<InputService>(Lifetime.Scoped).As<IInputService>();

@@ -9,14 +9,13 @@ namespace Core.States.Game.Enemy {
         [Inject] private GeneralConfig Configs { get; set; }
         [Inject] private LevelContext Level { get; set; }
         [Inject] private MonsterFactory Factory { get; set; }
-        private ICooldown Cooldown { get; set; }
+        [Inject] private ICooldown Cooldown { get; set; }
 
         [field: SerializeField] private float TotalHealth { get; set; }
         public float time = 3f;
 
 
         private void Start() {
-            Cooldown = new Cooldown(this);
             TotalHealth = Level.enemy.totalHealth;
         }
         public void Update() {
