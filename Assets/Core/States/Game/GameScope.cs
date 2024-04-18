@@ -1,5 +1,6 @@
 using Core.Base.Data;
 using Core.States.Game.Enemy;
+using Core.States.Game.Movement;
 using VContainer;
 using VContainer.Unity;
 
@@ -10,9 +11,10 @@ namespace Core.States.Game {
 
         protected override void Configure(IContainerBuilder builder) {
             builder.RegisterInstance(config);
-            builder.Register<RuntimeData>(Lifetime.Scoped);
-            RegisterMonsterScope(builder);
+            builder.Register<RuntimeData>(Lifetime.Singleton);
+            builder.RegisterComponentInHierarchy<LevelContext>();
 
+            builder.Register<MovementSystem>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
             // builder.Register<MusicService>(Lifetime.Scoped);
             // builder.Register<InputService>(Lifetime.Scoped).As<IInputService>();
             // builder.RegisterComponentInHierarchy<SmoothCamera>().As<ICameraService>();
@@ -21,16 +23,17 @@ namespace Core.States.Game {
             // builder.RegisterEntryPoint<DefeatSystem>();
             // builder.RegisterEntryPoint<VictorySystem>();
 
-            builder.RegisterComponentInHierarchy<LevelContext>();
-            builder.RegisterComponentInHierarchy<MonsterSpawner>();
             // builder.RegisterComponentInHierarchy<UIDocumentTree>();
+            
+            RegisterMonsterScope(builder);
 
             builder.RegisterEntryPoint<GameStartup>();
         }
 
 
         private static void RegisterMonsterScope(IContainerBuilder builder) {
-            builder.Register<MonsterFactory>(Lifetime.Scoped);
+            builder.Register<MonsterFactory>(Lifetime.Singleton);
+            builder.RegisterComponentInHierarchy<MonsterSpawner>();
         }
     }
 }

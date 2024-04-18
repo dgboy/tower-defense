@@ -1,10 +1,11 @@
+using Core.States.Game.Enemy;
 using UnityEngine;
 
-namespace Core.Base.Data {
+namespace Core.States.Game {
     public class LevelContext : MonoBehaviour {
         // public UIDocumentTree ui;
         // public AudioSource musicSource;
         public Transform runtimeParent;
-        public float enemyTotalHealth = 30;
+        public EnemyContext enemy;
     }
 }

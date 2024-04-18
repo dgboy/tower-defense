@@ -9,11 +9,11 @@ namespace Core.States.Game.Enemy {
         private int Counter { get; set; } = 0;
 
 
-        public MonsterActor Create(MonsterConfig config, Transform parent) {
-            var actor = Object.Instantiate(Configs.enemy.prefab, parent);
+        public MonsterActor Create(MonsterConfig config, Vector3 at, Transform parent) {
+            var actor = Object.Instantiate(Configs.enemy.prefab, at, Quaternion.identity, parent);
             actor.name = $"{config.name} {Counter}";
 
-            // actor.movement.speed = config.speed;
+            actor.speed = config.speed;
             Counter++;
             return actor;
         }
