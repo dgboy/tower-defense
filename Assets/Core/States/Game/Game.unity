@@ -4682,6 +4682,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7571685551552249497, guid: a553302a009883e4d883b8fb66095ed1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4856,6 +4860,10 @@ PrefabInstance:
     - target: {fileID: 7964081318526785953, guid: fb00072135a13f34f9b65d7859d241ef, type: 3}
       propertyPath: m_Name
       value: UiSettingsButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964081318526785953, guid: fb00072135a13f34f9b65d7859d241ef, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5134,11 +5142,11 @@ SceneRoots:
   - {fileID: 560136845}
   - {fileID: 519420032}
   - {fileID: 619394802}
+  - {fileID: 1373348957}
   - {fileID: 588482244}
   - {fileID: 923534553}
+  - {fileID: 135493503}
+  - {fileID: 2047093440}
   - {fileID: 6885765673614350900}
   - {fileID: 1674842053}
   - {fileID: 1788297019}
-  - {fileID: 135493503}
-  - {fileID: 2047093440}
-  - {fileID: 1373348957}

@@ -1,5 +1,6 @@
 using Core.Base.Data;
 using Core.States.Game.Movement;
+using Unity.VisualScripting;
 using UnityEngine;
 using VContainer;
 
@@ -7,6 +8,7 @@ namespace Core.States.Game.Enemy {
     public class MonsterFactory {
         [Inject] private GeneralConfig Configs { get; set; }
         [Inject] private MovementSystem Movement { get; set; }
+        [Inject] private LevelContext Level { get; set; }
 
         private int Counter { get; set; }
 
@@ -17,7 +19,11 @@ namespace Core.States.Game.Enemy {
 
             actor.speed = config.speed;
             actor.damage = config.damage;
-            Movement.Pool.Add(actor);
+            // Movement.Pool.Add(actor);
+
+            var movement = actor.AddComponent<TrajectoryMovement>();
+            movement.Actor = actor;
+            movement.Level = Level;
 
             Counter++;
             Debug.Log($"{actor.name} is ready!");
