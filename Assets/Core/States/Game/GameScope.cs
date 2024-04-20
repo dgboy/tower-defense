@@ -1,5 +1,6 @@
 using Core.Base;
 using Core.Base.Data;
+using Core.States.Game.Common;
 using Core.States.Game.Enemy;
 using Core.States.Game.Movement;
 using Core.States.Game.Player;
@@ -37,6 +38,7 @@ namespace Core.States.Game {
 
         private static void RegisterPlayerScope(IContainerBuilder builder) {
             builder.Register<TowerFactory>(Lifetime.Singleton);
+            builder.Register<TowerProjectileFactory>(Lifetime.Singleton);
         }
         private static void RegisterMonsterScope(IContainerBuilder builder) {
             builder.Register<MonsterFactory>(Lifetime.Singleton);

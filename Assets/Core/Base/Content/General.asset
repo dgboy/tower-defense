@@ -17,6 +17,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 2d5897f2b637d694ab13ccfc6c0ed7b9, type: 2}
     - {fileID: 11400000, guid: 58439738d45320e40b76c303c50d5701, type: 2}
     - {fileID: 11400000, guid: 705232fed869f6d49ab7cd7f24bd88f1, type: 2}
+    projectile: {fileID: 3203049241477411634, guid: 5285b94896d0faa4fa92fc54a498c07c, type: 3}
   enemy:
     prefab: {fileID: -5805434823454469466, guid: 37d7d745a7e05e04a88db04ca3958d59, type: 3}
     monsters:

@@ -19,12 +19,18 @@ namespace Core.States.Game.Enemy {
             TotalHealth = Level.enemy.totalHealth;
         }
         public void Update() {
+            if (TotalHealth <= 0) {
+                Debug.Log($"{GetType().Name} Enemy Wave is end");
+                // Debug.Log($"=== VICTORY ===");
+                enabled = false;
+            }
+
             if (!Cooldown.IsExpired || TotalHealth <= 0)
                 return;
 
             var pool = Configs.enemy.monsters.Where(x => x.health <= TotalHealth).ToList();
             if (pool.Count <= 0) {
-                // Debug.Log($"{GetType().Name} Enemy Wave 0 is end");
+                TotalHealth = 0;
                 return;
             }
 
