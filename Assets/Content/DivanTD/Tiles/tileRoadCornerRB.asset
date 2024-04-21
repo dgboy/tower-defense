@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: tileRoadCornerRB
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: d9273f27e63434941aec734b25cbd412, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af36ab1dbd9aceb44be3885caf84f42c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

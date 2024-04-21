@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: tileRoadHorizontal
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 8ce26aedcdb3fc94895a9dacd6b04156, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 581d6cb6dbbf8ae4da9d0163f980849f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

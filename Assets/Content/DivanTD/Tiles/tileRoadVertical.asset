@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: tileRoadVertical
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: d1e168af271907a48ba22fa3d1443781, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d54670402ce335499ab8d853559e39f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
