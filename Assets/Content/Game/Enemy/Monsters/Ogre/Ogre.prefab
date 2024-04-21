@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ogre
       objectReference: {fileID: 0}
+    - target: {fileID: 3950991405077899364, guid: 37d7d745a7e05e04a88db04ca3958d59, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950991405077899364, guid: 37d7d745a7e05e04a88db04ca3958d59, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5783997481345945246, guid: 37d7d745a7e05e04a88db04ca3958d59, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
