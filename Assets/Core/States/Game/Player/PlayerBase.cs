@@ -9,7 +9,7 @@ namespace Core.States.Game.Player {
         public Slider healthBar;
 
         private void Start() {
-            maxHealth = _health;
+            _health = maxHealth;
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
