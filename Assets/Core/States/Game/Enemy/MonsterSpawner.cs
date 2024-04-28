@@ -13,6 +13,7 @@ namespace Core.States.Game.Enemy {
 
         [field: SerializeField] private float TotalHealth { get; set; }
         public float time = 3f;
+        public float radius = 3f;
 
 
         private void Start() {
@@ -35,9 +36,23 @@ namespace Core.States.Game.Enemy {
             }
 
             var config = pool[Random.Range(0, pool.Count)];
-            Factory.Create(config, Level.enemy.path[0].position, Level.runtimeParent);
+            Factory.Create(config, GetRandomPointOnCircle(radius), Level.runtimeParent);
             TotalHealth -= config.health;
             Cooldown.Start(time);
+        }
+
+        public void OnDrawGizmos() {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(Vector3.zero, radius);
+        }
+
+        private static Vector2 GetRandomPointOnCircle(float r) {
+            int angle = Random.Range(0, 360);
+
+            return new Vector2(
+                r * Mathf.Cos(angle),
+                r * Mathf.Sin(angle)
+            );
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Core.States.Game.Enemy {
             actor.maxHealth = actor.health = config.health;
             actor.damageToBase = config.damage;
 
-            var movement = actor.AddComponent<TrajectoryMovement>();
+            var movement = actor.AddComponent<StraightMovement>();
             movement.Actor = actor;
             movement.Level = Level;
 
