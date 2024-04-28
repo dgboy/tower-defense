@@ -18,8 +18,8 @@ namespace Core.States.Game {
 
         public void Start() {
             Logger.Log("GAME START", this, Dye.Orange);
-            var towers = Configs.player.towers;
-            TowerFactory.Create(towers[Random.Range(0, towers.Length)], Context.player.placements[0].position, Context.runtimeParent);
+            // var towers = Configs.player.towers;
+            // TowerFactory.Create(towers[Random.Range(0, towers.Length)], Context.player.placements[0].position, Context.runtimeParent);
         }
 
         public void FixedTick() {
