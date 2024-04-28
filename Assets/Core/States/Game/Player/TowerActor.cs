@@ -19,5 +19,11 @@ namespace Core.States.Game.Player {
             // Radar.OnEnter -= Shooting.Track;
             // Radar.OnExit -= Shooting.Untrack;
         }
+        
+        
+        public void OnDrawGizmos() {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(Vector3.zero, Radar.Range);
+        }
     }
 }

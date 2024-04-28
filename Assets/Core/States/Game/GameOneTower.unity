@@ -819,7 +819,7 @@ MonoBehaviour:
     totalHealth: 30
   player:
     placements:
-    - {fileID: 0}
+    - {fileID: 1982808226}
     base: {fileID: 1982808226}
 --- !u!114 &560136847
 MonoBehaviour:
@@ -5129,11 +5129,11 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 560136845}
+  - {fileID: 1674842053}
+  - {fileID: 1788297019}
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1373348957}
   - {fileID: 588482244}
   - {fileID: 923534553}
   - {fileID: 1150397565}
-  - {fileID: 1674842053}
-  - {fileID: 1788297019}

@@ -1,7 +1,5 @@
-using System;
 using Core.States.Game.Enemy;
 using DG_Pack.Base;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Core.States.Game.Common {
@@ -9,20 +7,20 @@ namespace Core.States.Game.Common {
         [field: SerializeField] public Rigidbody2D Rigidbody { get; set; }
         public float speed = 1f;
         public float damage;
+        public float lifetime = 5f;
 
         public MonsterActor Target { get; set; }
         private ICooldown Lifetime { get; set; }
 
         private void Start() {
             Lifetime = new CoroutineCooldown(this);
-            Lifetime.Start(5f);
+            Lifetime.Start(lifetime);
         }
         public void FixedUpdate() {
-            if (Lifetime.IsExpired)
-                KillSelf();
-
-            if (Target == null)
+            if (Lifetime.IsExpired || Target == null) {
+                Die();
                 return;
+            }
 
             var from = Rigidbody.position;
             Vector2 to = Target.transform.position;
@@ -34,11 +32,11 @@ namespace Core.States.Game.Common {
                 Rigidbody.MovePosition(from + direction * (speed * Time.fixedDeltaTime));
             } else {
                 Target.TakeDamage(damage);
-                KillSelf();
+                Die();
             }
         }
 
-        private void KillSelf() {
+        private void Die() {
             Destroy(gameObject);
         }
     }

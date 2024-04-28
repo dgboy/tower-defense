@@ -5,7 +5,6 @@ using DG_Pack.Services.Log;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
-using Random = UnityEngine.Random;
 
 namespace Core.States.Game {
     public class GameStartup : IStartable, IFixedTickable, ITickable, IDisposable {
@@ -18,8 +17,7 @@ namespace Core.States.Game {
 
         public void Start() {
             Logger.Log("GAME START", this, Dye.Orange);
-            // var towers = Configs.player.towers;
-            // TowerFactory.Create(towers[Random.Range(0, towers.Length)], Context.player.placements[0].position, Context.runtimeParent);
+            SpawnFirstTower();
         }
 
         public void FixedTick() {
@@ -28,8 +26,12 @@ namespace Core.States.Game {
             if (Input.GetKeyDown(KeyCode.Escape))
                 Application.Quit();
         }
-
         public void Dispose() {
+        }
+
+
+        private void SpawnFirstTower() {
+            TowerFactory.Create(Configs.player.towers[0], Context.player.placements[0].position, Context.runtimeParent);
         }
     }
 }

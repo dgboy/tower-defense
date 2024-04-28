@@ -25,6 +25,7 @@ namespace Core.States.Game.Player {
             actor.Shooting.ProjectileFactory = ProjectileFactory;
             actor.Shooting.Cooldown = Cooldown;
             actor.Shooting.Actor = actor;
+            actor.transform.Find("visual").gameObject.SetActive(false);
 
             actor.Init();
             Counter++;
