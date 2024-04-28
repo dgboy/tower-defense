@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: General
   m_EditorClassIdentifier: 
   player:
+    firstTower: 0
     towers:
     - {fileID: 11400000, guid: 2d5897f2b637d694ab13ccfc6c0ed7b9, type: 2}
     - {fileID: 11400000, guid: 58439738d45320e40b76c303c50d5701, type: 2}

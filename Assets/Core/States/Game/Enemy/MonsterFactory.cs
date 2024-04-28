@@ -7,8 +7,9 @@ using VContainer;
 namespace Core.States.Game.Enemy {
     public class MonsterFactory {
         [Inject] private GeneralConfig Configs { get; set; }
-        [Inject] private MovementSystem Movement { get; set; }
+        // [Inject] private MovementSystem Movement { get; set; }
         [Inject] private LevelContext Level { get; set; }
+        [Inject] private RuntimeData Data { get; set; }
 
         private int Counter { get; set; }
 
@@ -20,11 +21,13 @@ namespace Core.States.Game.Enemy {
             actor.speed = config.speed;
             actor.maxHealth = actor.health = config.health;
             actor.damageToBase = config.damage;
+            actor.Data = Data;
 
             var movement = actor.AddComponent<StraightMovement>();
             movement.Actor = actor;
             movement.Level = Level;
 
+            Data.Enemies.Add(actor);
             Counter++;
             Debug.Log($"{actor.name} is ready!");
         }

@@ -17,7 +17,7 @@ namespace Core.States.Game {
 
         public void Start() {
             Logger.Log("GAME START", this, Dye.Orange);
-            SpawnFirstTower();
+            SpawnFirstTower(Configs.player);
         }
 
         public void FixedTick() {
@@ -30,8 +30,8 @@ namespace Core.States.Game {
         }
 
 
-        private void SpawnFirstTower() {
-            TowerFactory.Create(Configs.player.towers[0], Context.player.placements[0].position, Context.runtimeParent);
+        private void SpawnFirstTower(PlayerConfig config) {
+            TowerFactory.Create(config.towers[config.firstTower], Context.player.placements[0].position, Context.runtimeParent);
         }
     }
 }

@@ -1,8 +1,7 @@
-using Core.Base;
 using Core.Base.Data;
 using Core.States.Game.Common;
 using Core.States.Game.Enemy;
-using Core.States.Game.Movement;
+using Core.States.Game.Exodus;
 using Core.States.Game.Player;
 using DG_Pack.Base;
 using VContainer;
@@ -17,21 +16,14 @@ namespace Core.States.Game {
             builder.RegisterInstance(config);
             builder.Register<RuntimeData>(Lifetime.Singleton);
             builder.RegisterComponentInHierarchy<LevelContext>().AsSelf().As<ICoroutineRunner>();
+
             builder.Register<CoroutineCooldown>(Lifetime.Transient).As<ICooldown>();
-            
-            builder.Register<MovementSystem>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
-            // builder.Register<MusicService>(Lifetime.Scoped);
-            // builder.Register<InputService>(Lifetime.Scoped).As<IInputService>();
-            // builder.RegisterComponentInHierarchy<SmoothCamera>().As<ICameraService>();
 
-            // builder.Register<ExodusService>(Lifetime.Scoped).AsSelf().As<IInitializable>();
-            // builder.RegisterEntryPoint<DefeatSystem>();
-            // builder.RegisterEntryPoint<VictorySystem>();
-
-            // builder.RegisterComponentInHierarchy<UIDocumentTree>();
             RegisterPlayerScope(builder);
-            RegisterMonsterScope(builder);
+            RegisterEnemyScope(builder);
 
+            builder.Register<ExodusService>(Lifetime.Singleton);
+            builder.RegisterComponentInHierarchy<GameHUD>();
             builder.RegisterEntryPoint<GameStartup>();
         }
 
@@ -39,9 +31,13 @@ namespace Core.States.Game {
         private static void RegisterPlayerScope(IContainerBuilder builder) {
             builder.Register<TowerFactory>(Lifetime.Singleton);
             builder.Register<TowerProjectileFactory>(Lifetime.Singleton);
+
+            builder.RegisterComponentInHierarchy<PlayerBase>();
         }
-        private static void RegisterMonsterScope(IContainerBuilder builder) {
+        private static void RegisterEnemyScope(IContainerBuilder builder) {
             builder.Register<MonsterFactory>(Lifetime.Singleton);
+            builder.Register<EnemyWave>(Lifetime.Singleton);
+            
             builder.RegisterComponentInHierarchy<MonsterSpawner>();
         }
     }
