@@ -18,7 +18,7 @@ namespace Core.States.Game.Exodus {
         public void Tick() {
             if (!Data.BattleMode.Value) return;
 
-            if (Data.TotalHealth <= 0 && Data.Enemies.Count == 0)
+            if (EnemyWave.Health <= 0 && Data.Enemies.Count == 0)
                 Declare(ExodusID.Victory);
             else if (PlayerBase.Health <= 0)
                 Declare(ExodusID.Defeat);

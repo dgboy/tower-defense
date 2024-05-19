@@ -39,6 +39,7 @@ namespace Core.States.Game {
             builder.Register<MonsterFactory>(Lifetime.Singleton);
             builder.Register<EnemyWave>(Lifetime.Singleton);
             
+            builder.RegisterComponentInHierarchy<EnemyBase>();
             builder.RegisterComponentInHierarchy<MonsterSpawner>();
         }
     }
