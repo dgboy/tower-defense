@@ -1,26 +1,39 @@
 using Core.Base.Data;
 using Core.Game.Exodus;
+using Core.States.Game.Enemy;
+using Core.States.Game.Player;
 using DG_Pack.Services.Log;
-using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace Core.States.Game.Exodus {
-    public class ExodusService {
+    public class ExodusService : ITickable {
         [Inject] private ICustomLogger Logger { get; set; }
         [Inject] private GeneralConfig Configs { get; set; }
         [Inject] private LevelContext Context { get; set; }
         [Inject] private RuntimeData Data { get; set; }
+        [Inject] private EnemyWave EnemyWave { get; set; }
+        [Inject] private PlayerBase PlayerBase { get; set; }
 
+        public void Tick() {
+            if (!Data.BattleMode.Value) return;
 
-        public void Declare(ExodusID id) {
-            if (id == ExodusID.Victory) {
-                Debug.Log($"{GetType().Name} Enemy Wave is end");
-            }
+            if (Data.TotalHealth <= 0 && Data.Enemies.Count == 0)
+                Declare(ExodusID.Victory);
+            else if (PlayerBase.Health <= 0)
+                Declare(ExodusID.Defeat);
+        }
 
+        private void Declare(ExodusID id) {
             Data.BattleMode.Value = false;
+
+            if (id == ExodusID.Victory)
+                EnemyWave.Counter.Value++;
+            else
+                EnemyWave.Counter.Value = 1;
+
+            // Logger.Log($"Enemy Wave is end");
             Logger.Log($"=== {id} ===", Dye.Red);
-            // Data.Player = null;
-            // Context.ui.Show(ViewID.DefeatModal);
         }
     }
 }

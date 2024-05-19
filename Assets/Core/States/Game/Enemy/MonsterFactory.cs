@@ -23,7 +23,7 @@ namespace Core.States.Game.Enemy {
             actor.damageToBase = config.damage;
             actor.Data = Data;
 
-            var movement = actor.AddComponent<StraightMovement>();
+            var movement = actor.AddComponent<TrajectoryMovement>();
             movement.Actor = actor;
             movement.Level = Level;
 

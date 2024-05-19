@@ -1,42 +1,38 @@
-using Core.Game.Exodus;
 using Core.States.Game.Enemy;
-using Core.States.Game.Exodus;
 using UnityEngine;
 using UnityEngine.UI;
-using VContainer;
 
 namespace Core.States.Game.Player {
     public class PlayerBase : MonoBehaviour {
-        [Inject] private ExodusService ExodusService { get; set; }
-
         public float maxHealth = 10;
         public Slider healthBar;
-        private float _health;
+        public float Health { get; private set; }
 
         private void Start() {
-            _health = maxHealth;
+            Health = maxHealth;
         }
         public void Restore() {
-            _health = maxHealth;
-            healthBar.value = _health / maxHealth;
+            Health = maxHealth;
+            healthBar.value = Health / maxHealth;
             gameObject.SetActive(true);
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
             var actor = other.GetComponent<MonsterActor>();
 
-            _health -= actor.damageToBase;
-            healthBar.value = _health / maxHealth;
-            Debug.Log($"[{GetType().Name}] {actor.name} caused {actor.damageToBase} damage. {_health} HP left.");
+            Health -= actor.damageToBase;
+            healthBar.value = Health / maxHealth;
+            Debug.Log($"[{GetType().Name}] {actor.name} caused {actor.damageToBase} damage. {Health} HP left.");
 
             actor.Die();
 
-            if (_health > 0)
-                return;
+            if (Health <= 0)
+                Kill();
+        }
 
-            Debug.Log($"[{GetType().Name}] base is destroyed!");
+        private void Kill() {
             gameObject.SetActive(false);
-            ExodusService.Declare(ExodusID.Defeat);
+            Debug.Log($"[{GetType().Name}] base is destroyed!");
         }
     }
 }

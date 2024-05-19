@@ -11,16 +11,14 @@ namespace Core.States.Game.Enemy {
         [Inject] private RuntimeData Data { get; set; }
         [Inject] private PlayerBase Base { get; set; }
 
-        public ReactiveToNew<int> Counter { get; } = new();
+        public ReactiveToNew<int> Counter { get; } = new(1);
 
 
         public void Start() {
             Base.Restore();
-            Counter.Value++;
-
             Data.TotalHealth = Level.enemy.totalHealth + Counter.Value * (Configs.enemy.waveModifier * Level.enemy.totalHealth);
             Data.BattleMode.Value = true;
-            Debug.Log($"[{GetType().Name} {Counter}] is starting!");
+            Debug.Log($"[{GetType().Name} {Counter.Value}] is starting!");
         }
     }
 }

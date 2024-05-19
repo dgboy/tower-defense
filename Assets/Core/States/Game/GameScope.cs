@@ -3,6 +3,7 @@ using Core.States.Game.Common;
 using Core.States.Game.Enemy;
 using Core.States.Game.Exodus;
 using Core.States.Game.Player;
+using Core.States.Game.Spawn;
 using DG_Pack.Base;
 using VContainer;
 using VContainer.Unity;
@@ -16,13 +17,13 @@ namespace Core.States.Game {
             builder.RegisterInstance(config);
             builder.Register<RuntimeData>(Lifetime.Singleton);
             builder.RegisterComponentInHierarchy<LevelContext>().AsSelf().As<ICoroutineRunner>();
-
-            builder.Register<CoroutineCooldown>(Lifetime.Transient).As<ICooldown>();
+            
+            builder.Register<CertainSpawnPoint>(Lifetime.Singleton).AsSelf().As<ISpawnPoint>();
 
             RegisterPlayerScope(builder);
             RegisterEnemyScope(builder);
 
-            builder.Register<ExodusService>(Lifetime.Singleton);
+            builder.Register<ExodusService>(Lifetime.Singleton).AsSelf().As<ITickable>();
             builder.RegisterComponentInHierarchy<GameHUD>();
             builder.RegisterEntryPoint<GameStartup>();
         }

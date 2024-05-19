@@ -1,6 +1,7 @@
 using Core.States.Boot;
 using Core.States.Game;
 using Core.States.Home;
+using DG_Pack.Base;
 using DG_Pack.Services.FSM;
 using DG_Pack.Services.Log;
 using DG_Pack.Services.Scene;
@@ -12,6 +13,7 @@ namespace Core.Base {
         protected override void Configure(IContainerBuilder builder) {
             builder.Register<DyedLogger>(Lifetime.Singleton).As<ICustomLogger>();
             builder.Register<SceneService>(Lifetime.Singleton).As<ISceneService>();
+            builder.Register<CoroutineCooldown>(Lifetime.Transient).As<ICooldown>();
 
             builder.Register<StateFactory>(Lifetime.Singleton).As<IStateFactory>();
             builder.Register<StateMachine>(Lifetime.Singleton).As<IStateMachine>();

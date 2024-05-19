@@ -11,6 +11,5 @@ namespace Core.Base.Data {
         public ReactiveToNew<bool> BattleMode { get; } = new();
         public float TotalHealth { get; set; }
         public List<MonsterActor> Enemies { get; } = new();
-
     }
 }
