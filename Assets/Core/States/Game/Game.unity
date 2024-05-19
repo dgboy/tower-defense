@@ -1240,7 +1240,7 @@ GameObject:
   - component: {fileID: 504543513}
   - component: {fileID: 504543512}
   m_Layer: 5
-  m_Name: label
+  m_Name: WaveCounterLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1285,7 +1285,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Wave 1
+  m_text: Wave 999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d4201d642fe2c1b4093e35b61d679a38, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: dfb903b58c7ee3e41a808721d7c6f518, type: 2}
@@ -1843,8 +1843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c53ddc87e4e4feca589d6d274420e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveCounter: {fileID: 504543512}
-  waveStartButton: {fileID: 2895508820426576715}
 --- !u!1001 &607548406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5162,7 +5160,7 @@ GameObject:
   - component: {fileID: 1679516564}
   - component: {fileID: 1679516563}
   m_Layer: 5
-  m_Name: Wave Counter
+  m_Name: WaveCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8139,6 +8137,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7571685551552249497, guid: a553302a009883e4d883b8fb66095ed1, type: 3}
+      propertyPath: m_Name
+      value: StartBattleButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571685551552249497, guid: a553302a009883e4d883b8fb66095ed1, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -8156,17 +8158,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 52868273263336239, guid: a553302a009883e4d883b8fb66095ed1, type: 3}
   m_PrefabInstance: {fileID: 2895508820426576713}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2895508820426576715 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7501276473856081138, guid: a553302a009883e4d883b8fb66095ed1, type: 3}
-  m_PrefabInstance: {fileID: 2895508820426576713}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3004541213209084797
 GameObject:
   m_ObjectHideFlags: 0

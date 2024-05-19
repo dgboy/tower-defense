@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using Core.Base.Data;
 using Core.States.Game.Enemy;
-using TMPro;
+using DG_Pack.UI.Canvas;
+using DG_Pack.UI.Canvas.Handlers;
 using UnityEngine;
-using UnityEngine.UI;
 using VContainer;
 
 namespace Core.States.Game {
@@ -10,26 +11,24 @@ namespace Core.States.Game {
         [Inject] private EnemyWave EnemyWave { get; set; }
         [Inject] private RuntimeData Data { get; set; }
 
-        public TextMeshProUGUI waveCounter;
-        public Button waveStartButton;
+        private List<IHandler> Handlers { get; set; }
+
 
         private void Awake() {
-            EnemyWave.Counter.OnChanged += RefreshWaveCounter;
-            Data.BattleMode.OnChanged += RefreshWaveStartButton;
-            waveStartButton.onClick.AddListener(EnemyWave.Start);
+            Handlers = new List<IHandler> {
+                new Click("StartBattleButton", EnemyWave.Start),
+                new Active("StartBattleButton", Data.BattleMode, true),
+                
+                new TextVar<int>("WaveCounterLabel", EnemyWave.Counter, "Wave"),
+            };
+
+            Handlers.ForEach(x => x.Bind(this));
         }
         private void Start() {
-            RefreshWaveCounter();
-            RefreshWaveStartButton();
+            Handlers.ForEach(x => x.Refresh());
         }
         private void OnDestroy() {
-            EnemyWave.Counter.OnChanged -= RefreshWaveCounter;
-            Data.BattleMode.OnChanged -= RefreshWaveStartButton;
-            waveStartButton.onClick.RemoveListener(EnemyWave.Start);
+            Handlers.ForEach(x => x.Unbind());
         }
-
-
-        private void RefreshWaveCounter() => waveCounter.text = $"Wave {EnemyWave.Counter.Value}";
-        private void RefreshWaveStartButton() => waveStartButton.gameObject.SetActive(!Data.BattleMode.Value);
     }
 }
