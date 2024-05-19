@@ -19,6 +19,8 @@ namespace Core.States.Game {
                 new Click("StartBattleButton", EnemyWave.Start),
                 new Active("StartBattleButton", Data.BattleMode, true),
                 
+                new ViewGroup("States", Data.BattleState),
+                
                 new TextVar<int>("WaveCounterLabel", EnemyWave.Counter, "Wave"),
             };
 

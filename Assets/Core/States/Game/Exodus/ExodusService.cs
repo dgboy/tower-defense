@@ -26,6 +26,7 @@ namespace Core.States.Game.Exodus {
 
         private void Declare(ExodusID id) {
             Data.BattleMode.Value = false;
+            Data.BattleState.Value = 0;
 
             if (id == ExodusID.Victory)
                 EnemyWave.Counter.Value++;

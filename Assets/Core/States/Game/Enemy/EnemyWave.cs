@@ -18,6 +18,7 @@ namespace Core.States.Game.Enemy {
             Base.Restore();
             Data.TotalHealth = Level.enemy.totalHealth + Counter.Value * (Configs.enemy.waveModifier * Level.enemy.totalHealth);
             Data.BattleMode.Value = true;
+            Data.BattleState.Value = 1;
             Debug.Log($"[{GetType().Name} {Counter.Value}] is starting!");
         }
     }
