@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Core.Base.Data;
 using Core.States.Game.Enemy;
+using DG_Pack.Base.Reactive;
 using DG_Pack.UI.Canvas;
 using DG_Pack.UI.Canvas.Handlers;
 using UnityEngine;
@@ -12,16 +13,20 @@ namespace Core.States.Game {
         [Inject] private RuntimeData Data { get; set; }
 
         private List<IHandler> Handlers { get; set; }
+        private ReactiveToNew<bool> FireSpellLocked { get; } = new();
+        private ReactiveToNew<bool> ThunderSpellLocked { get; } = new();
 
 
         private void Awake() {
             Handlers = new List<IHandler> {
+                new TextVar<int>("WaveCounterLabel", EnemyWave.Counter, "Wave"),
+                
                 new Click("StartBattleButton", EnemyWave.Start),
                 new Active("StartBattleButton", Data.BattleMode, true),
                 
                 new ViewGroup("States", Data.BattleState),
-                
-                new TextVar<int>("WaveCounterLabel", EnemyWave.Counter, "Wave"),
+                new ActiveStateSwitch("SpellFire", FireSpellLocked),
+                new ActiveStateSwitch("SpellThunder", ThunderSpellLocked),
             };
 
             Handlers.ForEach(x => x.Bind(this));
